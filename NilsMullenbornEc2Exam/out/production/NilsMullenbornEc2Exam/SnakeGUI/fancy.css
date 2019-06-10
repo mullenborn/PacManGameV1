@@ -1,0 +1,38 @@
+/**
+ * Fancy.css
+ * @author Nils Müllenborn, nimu@ruc.dk
+ * Created on 28 March 2019
+ * CSS sheet
+ */
+
+
+.root
+{
+    -fx-background-color: black;
+}
+.canvas
+{
+    -fx-text-fill: white;
+}
+.label
+{
+    -fx-text-fill: white;
+}
+.button
+{
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+}
+
+.toggle-button
+{
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+}
+.toggle-button:selected
+{
+    -fx-background-color: lightblue;
+    -fx-text-fill: white;
+
+}
+

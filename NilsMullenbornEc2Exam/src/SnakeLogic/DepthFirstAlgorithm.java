@@ -1,0 +1,275 @@
+/**
+ * DepthFirstAlgorithm.java
+ * @author Nils Müllenborn, nimu@ruc.dk
+ * Created on 28 March 2019
+ * Implementation of DFS algorithm
+ * NOTE algorithm does not search correctly
+ * TODO Fix
+ */
+package SnakeLogic;
+
+import java.util.ArrayList;
+
+public class DepthFirstAlgorithm {
+    private Position rootPos, tempPos, goalPos;
+    private Direction dir;
+    private boolean valid, stopped, foundGoal;
+    private int distanceFromRoot;
+    private int[][] maze;
+    private int[] tempStore;
+    private ArrayList<int[]> stack = new ArrayList<>();
+
+
+    /**
+     * setup constructor
+     */
+    public void depthFirstAlgorithm(int[][] maze, Player ghost, Player pacMan) {
+        this.maze = maze;
+
+        // Setup
+        rootPos = new Position(ghost.getX(), ghost.getY());
+        tempPos = new Position(ghost.getX(), ghost.getY());
+        goalPos = new Position(pacMan.getX(), pacMan.getY());
+        tempStore = new int[3];
+        distanceFromRoot = 0;
+        insertData(rootPos, distanceFromRoot);
+
+        move();
+        ghost.setX(stack.get(1)[0]);
+        ghost.setY(stack.get(1)[1]);
+    }
+
+    /**
+     * keep ghosting moving as long as pac man hasn't been found
+     */
+    private void move() {
+        while(!foundGoal){
+            forward();
+            //retrace();
+        }
+    }
+
+    /**
+     * method for tracing back to previous position to locate new valid move
+     */
+    private void retrace() {
+        while (stopped) {
+            if (foundGoal){
+                break;
+            }
+            // fetch data
+            receiveData(tempPos, distanceFromRoot);
+            maze[tempPos.getY()][tempPos.getX()] = 2;
+            // remove current
+            stack.remove(distanceFromRoot);
+            distanceFromRoot--;
+            stopped = false;
+        }
+        move();
+    }
+
+    /**
+     * method for moving forward to a new valid position
+     */
+    private void forward() {
+        //runs while we are moving forward
+        while (!stopped){
+            if (foundGoal){
+                break;
+            }
+            // use the position at index distanceFromRoot as the position we wish to work with
+            tempStore = stack.get(distanceFromRoot);
+
+            // set first move to be east
+            dir = Direction.E;
+            // find a valid position and move there
+            if (checkForValidPosition(tempStore[0], tempStore[1])){
+                if (moveToValidPosition(tempStore[0], tempStore[1])){
+                    //increment index for every iteration
+                    distanceFromRoot++;
+                    //push data to stack
+                    insertData(tempPos, distanceFromRoot);
+                }
+            }
+            else
+            {
+                stopped = true;
+            }
+        }
+        retrace();
+    }
+
+    /**
+     * method takes position and distance from root and places in stack
+     */
+    private void insertData(Position pos, int dist) {
+        int[] store = new int[3];
+        store[0] = pos.getX();
+        store[1] = pos.getY();
+        store[2] = dist;
+        stack.add(store);
+        if(goalPos.getX() == store[0] && goalPos.getY() == store[1]) foundGoal = true;
+    }
+
+    /**
+     * method gets data from stack and places in position object
+     */
+    private void receiveData(Position pos, int dist) {
+        int[] store = stack.get(dist);
+        pos.setX(store[0]);
+        pos.setY(store[1]);
+    }
+
+    /**
+     * checks if there are any valid moves AND moves to the first valid position
+     */
+    private boolean moveToValidPosition(int x, int y){
+        if(goalPos.getX() == x && goalPos.getY() == y) foundGoal = true;
+        switch (dir){
+            case E:
+                if (isValid(x + 1, y)) {
+                    if (isVisited(x + 1, y)){
+                        dir = Direction.S;
+                        moveToValidPosition(x,y);
+                    }
+                    else if (!isVisited(x + 1, y)) {
+                        // set position as visited
+                        maze[y][x++] = 2;
+                        // and move there
+                        tempPos.setX(x++);
+                        tempPos.setY(y);
+                        valid = true;
+                        break;
+                    }
+                }
+            case S:
+                if (isValid(x, y + 1)) {
+                    if (isVisited(x, y + 2)){
+                        dir = Direction.W;
+                        moveToValidPosition(x,y);
+                    }
+                    else if (!isVisited(x, y + 1)) {
+                        // set position as visited
+                        maze[y++][x] = 2;
+                        // and move there
+                        tempPos.setX(x);
+                        tempPos.setY(y++);
+                        valid = true;
+                        break;
+                    }
+                }
+            case W:
+                if (isValid(x - 1, y)) {
+                    if (isVisited(x - 1, y)){
+                        dir = Direction.N;
+                        moveToValidPosition(x,y);
+                        break;
+                    }
+                    else if (!isVisited(x - 1, y)) {
+                        // set position as visited
+                        maze[y][x--] = 2;
+                        // and move there
+                        tempPos.setX(x--);
+                        tempPos.setY(y);
+                        valid = true;
+                        break;
+                    }
+                }
+            case N:
+                if (isValid(x, y - 1)) {
+                    if (!isVisited(x, y - 1)){
+                        // set position as visited
+                        maze[y--][x] = 2;
+                        // and move there
+                        tempPos.setX(x);
+                        tempPos.setY(y--);
+                        // set valid to be true
+                        valid = true;
+                        break;
+                    }
+                }
+                else {
+                    maze[y][x] = 2;
+                    stopped = true;
+                    break;
+                }
+                valid = false;
+        }
+        return valid;
+    }
+
+    /**
+     * checks if there are any valid moves
+     */
+    private boolean checkForValidPosition(int x, int y){
+        switch (dir){
+            case E:
+                if (isValid(x + 1, y)) {
+                    if (isVisited(x + 1, y)){
+                        dir = Direction.S;
+                        checkForValidPosition(x,y);
+                    }
+                    else if (!isVisited(x + 1, y)) {
+                        valid = true;
+                        break;
+                    }
+                }
+            case S:
+                if (isValid(x, y + 1)) {
+                    if (isVisited(x, y + 2)){
+                        dir = Direction.W;
+                        checkForValidPosition(x,y);
+                    }
+                    else if (!isVisited(x, y + 1)) {
+                        valid = true;
+                        break;
+                    }
+                }
+            case W:
+                if (isValid(x - 1, y)) {
+                    if (isVisited(x - 1, y)){
+                        dir = Direction.N;
+                        checkForValidPosition(x,y);
+                        break;
+                    }
+                    else if (!isVisited(x - 1, y)) {
+                        valid = true;
+                        break;
+                    }
+                }
+            case N:
+                if (isValid(x, y - 1)) {
+                    if (!isVisited(x, y - 1)){
+                        valid = true;
+                        break;
+                    }
+                }
+                else {
+                    valid = false;
+                    stopped = true;
+                    break;
+                }
+                valid = false;
+        }
+        return valid;
+    }
+
+    /**
+     * check if location x,y is visited or not
+     */
+    private boolean isVisited(int x, int y)
+    {
+        if (maze[y][x] == 2) return true;
+        else return false;
+    }
+
+    /**
+     * check if location x, y is a valid move
+     */
+    private boolean isValid(int x, int y)
+    {
+        if (x<0 || y<0 || x>20 || y>21 || maze[y][x] == 1) return false;
+        else return true;
+    }
+
+}

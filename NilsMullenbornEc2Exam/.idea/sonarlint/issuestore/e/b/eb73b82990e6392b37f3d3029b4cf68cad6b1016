@@ -1,0 +1,29 @@
+
+Ysquid:S1854¹"5Remove this useless assignment to local variable "y".(–Óè‹øÿÿÿÿ8Ô“—–§-
+Esquid:S1659"'Declare "foundGoal" on a separate line.(Òó™Ê8ëğ×§-
+Usquid:S1135"2Complete the task associated to this TODO comment.(ûğ·Ôÿÿÿÿÿ8Úåí•§-
+Hsquid:S1659"%Declare "goalPos" on a separate line.(§û¸üüÿÿÿÿ8ƒôØ§-
+rsquid:S00120	"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(½ÑæŸ
+j
+squid:S128¡"LEnd this switch case with an unconditional break, return or throw statement.(«ß®8Ô“—–§-
+j
+squid:S128‘"LEnd this switch case with an unconditional break, return or throw statement.(¼ŞÙé8Ô“—–§-
+osquid:S3776~"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(ª®÷E8Ô“—–§-
+Tsquid:S1854¬"5Remove this useless assignment to local variable "x".(Şçö8Ô“—–§-
+esquid:S1126"AReplace this if-then-else statement by a single return statement.(½×Üûşÿÿÿÿ8Ô“—–§-
+o
+squid:S128Î"LEnd this switch case with an unconditional break, return or throw statement.(Ü¬¾¼øÿÿÿÿ8Ô“—–§-
+Tsquid:S1854œ"5Remove this useless assignment to local variable "y".(êïŒ8Ô“—–§-
+ysquid:S1450"VRemove the "rootPos" field and declare it as a local variable in the relevant methods.(§û¸üüÿÿÿÿ8ÿ¹¤§-
+Tsquid:S1854‹"5Remove this useless assignment to local variable "x".(ºÑø8Ô“—–§-
+o
+squid:S128"LEnd this switch case with an unconditional break, return or throw statement.(Ü¬¾¼øÿÿÿÿ8Ô“—–§-
+Hsquid:S1659"%Declare "tempPos" on a separate line.(§û¸üüÿÿÿÿ8ƒôØ§-
+Csquid:S1659"%Declare "stopped" on a separate line.(Òó™Ê8«ÿî§-
+j
+squid:S128ä"LEnd this switch case with an unconditional break, return or throw statement.(«ß®8Ô“—–§-
+j
+squid:S128Ù"LEnd this switch case with an unconditional break, return or throw statement.(¼ŞÙé8Ô“—–§-
+`squid:S1126†"AReplace this if-then-else statement by a single return statement.(Äÿ¼¿8Ô“—–§-
+vsquid:S3776Ì"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(¢’ôÜúÿÿÿÿ8Ô“—–§-
+isquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(ÎÚŞÂ8ÂÕÄŒ´-

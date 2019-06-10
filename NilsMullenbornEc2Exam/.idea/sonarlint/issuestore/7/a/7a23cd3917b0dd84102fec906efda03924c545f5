@@ -1,0 +1,27 @@
+
+=squid:S1659"&Declare "btnStart" on a separate line.(©¶»ò
+Gsquid:S1659"+Declare "heightCellNum" on a separate line.(·è‰şÿÿÿÿ
+@squid:S1659"$Declare "pacMan" on a separate line.(ÒºİËüÿÿÿÿ
+Fsquid:S1172m"*Remove this unused method parameter "now".(ú‰ Úüÿÿÿÿ
+Isquid:S1172Å",Remove this unused method parameter "event".(ÙŞÒüÿÿÿÿ
+P
+squid:S106Ç"9Replace this use of System.out or System.err by a logger.(ı›œ†
+;squid:S1659"$Declare "dfsMap" on a separate line.(›áŞ¬
+fsquid:S00100I"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³»Ğ™
+;squid:S1659"$Declare "dfsTwo" on a separate line.(æÄš—
+=squid:S1068 "&Remove this unused "gc" private field.(º§¢
+psquid:S2293!"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹ñş½
+^squid:HiddenFieldCheckŸ"6Rename "gc" which hides the field declared at line 32.(µ§ğ«üÿÿÿÿ
+=squid:S1659"&Declare "dfsThree" on a separate line.(æÄš—
+Dsquid:S1172Ğ",Remove this unused method parameter "event".(¢ÀÙ¯
+Fsquid:S1068"*Remove this unused "random" private field.(¡•îåşÿÿÿÿ
+Dsquid:S1659"(Declare "fieldWidth" on a separate line.(¶Û»÷ùÿÿÿÿ
+lsquid:S1450"URemove the "dfsTwo" field and declare it as a local variable in the relevant methods.(æÄš—
+Dsquid:S1659"(Declare "ghostThree" on a separate line.(ÒºİËüÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(æÁëÏ
+lsquid:S1450"URemove the "dfsOne" field and declare it as a local variable in the relevant methods.(æÄš—
+Bsquid:S1659"&Declare "ghostTwo" on a separate line.(ÒºİËüÿÿÿÿ
+P
+squid:S106Ó"9Replace this use of System.out or System.err by a logger.(¶ä“ã
+asquid:HiddenFieldCheck«"9Rename "walls" which hides the field declared at line 33.(ÂôºÓüÿÿÿÿ
+nsquid:S1450"WRemove the "dfsThree" field and declare it as a local variable in the relevant methods.(æÄš—
